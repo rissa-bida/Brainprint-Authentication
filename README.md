@@ -27,3 +27,6 @@ This project demonstrates the pipeline of a Brainprint authentication system. It
    ```bash
    git clone [https://github.com/YOUR_USERNAME/Brainprint-Authentication.git](https://github.com/YOUR_USERNAME/Brainprint-Authentication.git)
 >>>>>>> 53a0fe0 (Initial commit: Added UI and documentation)
+>>>>>>>
+<img width="1910" height="979" alt="image" src="https://github.com/user-attachments/assets/707471c5-7fed-4057-ba61-729d4c7f7454" />
+
