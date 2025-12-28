@@ -153,26 +153,39 @@ class BrainprintUI:
         self.btn_auth.config(state="disabled")
         threading.Thread(target=self._process_data).start()
 
+
     def _process_data(self):
         self.log("Capturing 5s EEG segment...")
-        segment = self.eeg_buffer[-100:]  # grab last 100 samples (simulated 5s)
+        segment = np.array(self.eeg_buffer[-100:])  # grab last 100 samples (simulated 5s)
         time.sleep(1)
 
         self.log("Preprocessing EEG...")
+        # TEMPLATE: Insert real preprocessing here
+        # Example: normalization, filtering, artifact removal
+        preprocessed = segment  # currently just passes data as-is
         time.sleep(0.8)
 
         self.log("Extracting Features...")
+        # TEMPLATE: Feature extraction if required (optional for raw LSTM input)
+        features = preprocessed  # currently just passes data as-is
         time.sleep(0.8)
 
-        self.log("Running LSTM Model...")
-        time.sleep(1.5)
+        self.log("Preparing input tensor for LSTM...")
+        # TEMPLATE: Convert to 3D tensor (batch, timesteps, channels)
+        model_input = features[np.newaxis, :, :]  # shape: (1, timesteps, channels)
+        time.sleep(0.5)
 
-        # Simulated prediction (replace with your LSTM model)
-        predicted_user = "Clarissa M."
+        self.log("Running LSTM Model...")
+        # TEMPLATE: Replace this block with actual model prediction
+        # e.g., pred_probs = lstm_model.predict(model_input)
+        #       predicted_index = np.argmax(pred_probs)
+        predicted_user = "Clarissa M."  # simulated output
         confidence = round(np.random.uniform(92, 99.9), 2)
+        time.sleep(1.5)
 
         self.log(f"Match Found: {predicted_user}")
         self._update_result(predicted_user, confidence)
+
 
     def _update_result(self, name, conf):
         self.lbl_status.config(text="ACCESS GRANTED", fg=ACCENT_COLOR)
